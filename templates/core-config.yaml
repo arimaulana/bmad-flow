@@ -1,0 +1,17 @@
+# BMAD core-config.yaml — $PROJECT_NAME
+# Copy this to _bmad/core/core-config.yaml after running npx bmad-method install
+# Then fill in project-specific values.
+
+project_name: "$PROJECT_NAME"
+user_name: ""
+communication_language: "English"
+
+# Files the Dev agent always loads before planning any task.
+# Keep this list lean — only files the agent truly needs on every task.
+devLoadAlwaysFiles:
+  - .claude/context/DECISIONS.md
+  - .claude/context/PATTERNS.md
+
+# Optional: also load recent ADRs directory listing so Dev agent
+# knows what decisions exist and can read the relevant ones.
+# - docs/decisions/
