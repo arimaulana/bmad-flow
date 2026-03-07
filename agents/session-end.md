@@ -1,52 +1,43 @@
 You are wrapping up a Claude Code session for $PROJECT_NAME.
 
-Ask the user these questions in sequence. Wait for each answer before proceeding.
+**Do NOT ask the user to summarize the session.** You have full access to the conversation history.
+Analyze it yourself, present your findings, and ask the user only to confirm or correct.
 
 ---
 
-## Step 1: What was completed?
+## Step 1–5: Analyze session (do this silently, then present)
 
-Ask: "What was completed or meaningfully progressed this session?"
+Review the full conversation and determine:
 
-Record the answer — you'll use it to update docs.
+1. **Completed** — what was finished or meaningfully progressed
+2. **Informal decisions** — choices made mid-task without `/decide` (look for "let's use X", "we'll go with Y", option selections, approach confirmations)
+3. **New assumptions** — things assumed but not formally decided
+4. **Drift** — anything that deviated from the original plan or contradicted CLAUDE.md constraints
+5. **Docs freshness** — does CLAUDE.md or PATTERNS.md need updating based on this session's work
 
----
+Then present a concise summary to the user:
 
-## Step 2: Informal decisions?
-
-Ask: "Were any decisions made mid-task without using `/decide`?"
-
-If yes:
-- Add a one-line entry to `.claude/context/DECISIONS.md` under the relevant section
-- **Only if the decision causes a change to the system** (code, architecture, data model, UI patterns): write the full ADR in `docs/decisions/NNN-name.md` — use template at `.claude/templates/adr.md`. Get the next number by listing `docs/decisions/` and incrementing the highest.
-- Purely process or workflow decisions do NOT need an ADR.
-
----
-
-## Step 3: New assumptions?
-
-Ask: "Did you make any assumptions mid-task that should be formally decided?"
-
-If yes: add to `CURRENT.md` under `## Open Assumptions`:
 ```
-- **Assumption:** [what] | **Context:** [why] | **Should decide?** yes/no
+Here's what I found from this session:
+
+**Completed:** [list]
+
+**Informal decisions that need logging:**
+- [decision] → needs ADR? yes/no
+- ...
+
+**Assumptions to track:** [list or "none"]
+
+**Drift:** [flagged items or "none"]
+
+**Docs to update:** [list or "none"]
+
+Confirm to proceed, or correct anything above.
 ```
 
----
+Wait for user confirmation before executing Step 6.
 
-## Step 4: Drift check
-
-Ask: "Did anything this session deviate from the original plan or contradict the vision/constraints?"
-
-If yes: flag it explicitly and suggest running `/decide` to formalize.
-
----
-
-## Step 5: Docs freshness check
-
-Ask: "Does `CLAUDE.md` or `PATTERNS.md` need any updates based on today's work?"
-
-If yes: make the update now, or note it in Open Assumptions.
+If the user says "iya", "yes", "go ahead", or similar — proceed directly with all updates.
 
 ---
 
@@ -72,11 +63,11 @@ Execute all applicable updates. Skip only if there is genuinely nothing new.
 - [one line per item]
 ```
 
-### `docs/decisions/` *(only if ADRs were written in Step 2)*
-- Confirm ADR file was written and DECISIONS.md one-liner references it with `[→ NNN]`
+### `docs/decisions/` *(only if ADRs were written)*
+- Write ADR file and add one-liner to DECISIONS.md with `[→ NNN]`
 
 ### `docs/brainstorm/` *(only if new product ideas were explored)*
-- If a new feature or product direction was meaningfully discussed, check whether an existing brainstorm file should be updated or a new one created
+- Update existing brainstorm file or create a new one if a new feature direction was meaningfully discussed
 
 ---
 

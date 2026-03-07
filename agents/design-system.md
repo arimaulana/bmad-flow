@@ -86,11 +86,13 @@ Then ask: "Does this direction resonate? What to adjust before I generate the fi
 
 ## Step 4: Generate Artifacts
 
-Only after confirmation. Generate all applicable artifacts:
+Only after confirmation. Generate all applicable artifacts.
 
-### A. `design/system/preview.html`
+**Order matters — always generate A before anything else.**
 
-Full living reference — one file, always up to date:
+### A. `design/system/preview.html` ← ALWAYS FIRST, ALWAYS REQUIRED
+
+This is the living visual reference for all design tokens. Required for every project regardless of platform (web, iOS, Android, cross-platform). It is the "whiteboard" — the place to visually verify tokens before implementing anywhere.
 
 ```html
 <!DOCTYPE html>
@@ -109,6 +111,10 @@ Sections:
 5. **Dark mode** — full page dark mode toggle (JS `prefers-color-scheme` or button)
 
 Use `tokens.css` variables throughout — never hardcode values.
+
+After generating, start the preview server (if configured) and take a screenshot to confirm it renders correctly.
+
+**Note on platform-native companions:** If the project has a native platform (iOS, Android, etc.), a platform-native component gallery may also be generated *in addition to* `preview.html` — never instead of it. The HTML preview remains the primary cross-platform reference. For iOS: `ComponentGalleryView.swift` (`#if DEBUG`, `#Preview` canvas).
 
 ### B. `design/system/tokens.css`
 
