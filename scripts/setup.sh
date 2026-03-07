@@ -89,7 +89,7 @@ done
 # ── Slash commands ────────────────────────────────────────────────────────────
 echo ""
 echo "📋 Setting up slash commands..."
-for agent in session-start session-end brainstorm design decide sync-check review; do
+for agent in session-start session-end brainstorm design design-system decide sync-check review; do
   dest=".claude/commands/${agent}.md"
   if [ ! -f "$dest" ]; then
     cp "$PACK/agents/${agent}.md" "$dest"
