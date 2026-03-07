@@ -11,7 +11,8 @@ your BMAD workflow.
 | `session-start` | `/session-start` | Load context, print session briefing |
 | `session-end` | `/session-end` | Wrap up session, update all docs |
 | `brainstorm` | `/brainstorm` | Explore UI/UX ideas, generate HTML sketches |
-| `design` | `/design` | Generate standalone HTML sketch |
+| `design` | `/design` | Generate standalone HTML sketch for one feature |
+| `design-system` | `/design-system` | Define or evolve the project-wide design system |
 | `decide` | `/decide` | Formal decision → ADR |
 | `sync-check` | `/sync-check` | Check context file staleness |
 | `review` | `/review` | Review changed code against patterns & decisions |
@@ -78,6 +79,9 @@ cd _bmad/expansion-packs/bmad-flow && git pull origin main  # Update bmad-flow
   Idea exploration:
     /brainstorm → /design → /decide → /dev
 
+  Design system:
+    /design-system (full or incremental — color, type, spacing, components)
+
   Quick task:
     /dev (or /task via BMAD)
 
@@ -106,3 +110,7 @@ cd _bmad/expansion-packs/bmad-flow && git pull origin main  # Update bmad-flow
 ## License
 
 MIT
+
+---
+
+*Built with AI assistance.*
