@@ -84,7 +84,7 @@ Status rules:
 Print applicable flags:
 
 **DECISIONS drift:** Newest ADR is newer than `_Last synced_` in DECISIONS.md →
-> ⚠️ DECISIONS.md digest is behind — `NNN-name.md` was added after last sync. Run `/decide` or update manually.
+> ⚠️ DECISIONS.md digest is behind — `NNN-name.md` was added after last sync. Update the digest manually or run `/session-end` to sync.
 
 **CURRENT.md stale:** `last_verified` more than 3 days old →
 > ⚠️ CURRENT.md is stale. Run `/session-end` to refresh it.

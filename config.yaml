@@ -1,6 +1,6 @@
 name: bmad-flow
 version: 0.1.0
 description: >
-  Session lifecycle, brainstorm, design/sketch, decide/ADR, sync-check, and
-  code review agents for BMAD. Adds structured session rituals, HTML sketch
-  generation, and formal decision tracking on top of BMAD core.
+  Session lifecycle, design/sketch, and sync-check agents for BMAD.
+  Adds structured session rituals (with auto-harvest ADRs), HTML sketch
+  generation, and design system management on top of BMAD Core.

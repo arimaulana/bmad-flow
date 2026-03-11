@@ -6,37 +6,39 @@ Quick reference for where to find things.
 
 ## Where to Look
 
-| Mau tahu apa? | File |
+| Looking for... | File |
 |---|---|
-| Lagi ngerjain apa? | `.claude/context/CURRENT.md` |
-| Feature backlog? | `_bmad-output/epics/` |
-| Story aktif? | `_bmad-output/stories/US-NNN.md` |
-| Requirements formal? | `_bmad-output/prd.md` |
-| Keputusan teknis (digest)? | `.claude/context/DECISIONS.md` |
-| ADR lengkap? | `docs/decisions/NNN-name.md` |
-| Desain sistem? | `_bmad-output/architecture.md` |
+| Current state? | `.claude/context/CURRENT.md` |
+| Feature backlog? | `BACKLOG.md` |
+| Sprint status? | `_bmad-output/implementation-artifacts/sprint-status.yaml` |
+| Story files? | `_bmad-output/implementation-artifacts/*.md` |
+| Requirements (PRD)? | `_bmad-output/planning-artifacts/prd.md` |
+| Architecture? | `_bmad-output/planning-artifacts/architecture.md` |
+| Epics & stories? | `_bmad-output/planning-artifacts/epics.md` |
+| Technical decisions (digest)? | `.claude/context/DECISIONS.md` |
+| ADR full text? | `docs/decisions/NNN-name.md` |
 | Code patterns? | `.claude/context/PATTERNS.md` |
-| Sketch UI? | `design/sketches/` |
-| Brainstorm log? | `docs/brainstorm/` |
+| UI sketches? | `design/sketches/` |
+| Brainstorm logs? | `docs/brainstorm/` |
 | Changelog? | `CHANGELOG.md` |
 
 ---
 
-## Agent → Output Map
+## Command → Output Map
 
-| Agent | Output |
+| Command | Output |
 |---|---|
 | `/session-start` | Briefing (no file output) |
-| `/session-end` | CURRENT.md, CHANGELOG.md, DECISIONS.md |
-| `/brainstorm` | `design/sketches/`, `docs/brainstorm/` |
-| `/design` | `design/sketches/`, `docs/brainstorm/` |
-| `/decide` | `docs/decisions/NNN.md`, DECISIONS.md |
+| `/session-end` | CURRENT.md, CHANGELOG.md, DECISIONS.md, docs/decisions/ |
+| `/bmad-brainstorming` | `docs/brainstorm/` |
+| `/design` | `design/sketches/`, `design/sketches/index.html` |
+| `/design-system` | `design/system/tokens.css`, `design/system/preview.html` |
+| `/bmad-bmm-create-story` | `_bmad-output/implementation-artifacts/` story file |
+| `/bmad-bmm-dev-story` | Source code, tests, story file updated |
+| `/bmad-bmm-code-review` | Story file updated, code fixes |
+| `/bmad-bmm-quick-spec` | Quick tech spec |
+| `/bmad-bmm-quick-dev` | Source code |
 | `/sync-check` | Report (no file output) |
-| `/review` | Report (no file output) |
-| `/pm` | `_bmad-output/prd.md`, stories/ |
-| `/architect` | `_bmad-output/architecture.md` |
-| `/dev` | Source code |
-| `/qa` | Test plan, acceptance validation |
 
 ---
 
@@ -45,7 +47,7 @@ Quick reference for where to find things.
 | File | Updated by | When |
 |---|---|---|
 | `CURRENT.md` | `/session-end` | Every session |
-| `DECISIONS.md` | `/decide`, `/session-end` | When decisions are made |
+| `DECISIONS.md` | `/session-end` | When decisions are made (auto-harvested) |
 | `CHANGELOG.md` | `/session-end` | When code or decisions change |
-| `docs/decisions/` | `/decide` | When formal decision is made |
-| `design/sketches/` | `/brainstorm`, `/design` | During design exploration |
+| `docs/decisions/` | `/session-end` | When formal decision is made |
+| `design/sketches/` | `/design` | During design exploration |

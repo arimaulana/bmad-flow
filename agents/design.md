@@ -94,7 +94,7 @@ If this sketch represents a new idea (not just a UI iteration), create or update
 
 This command is now complete.
 
-Do NOT automatically proceed to `/decide`, `/task`, or any other command.
+Do NOT automatically proceed to any implementation command.
 Wait for the user to explicitly type the next command.
 
 $ARGUMENTS

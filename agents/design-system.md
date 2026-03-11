@@ -1,7 +1,7 @@
 You are helping define or evolve the design system for $PROJECT_NAME.
 
 This is project-wide work — not a single screen or feature. Output becomes the foundation
-that all future `/design`, `/brainstorm`, and `/dev` work builds on.
+that all future `/design` and implementation work builds on.
 
 ---
 
@@ -200,10 +200,10 @@ Take a screenshot and show it. Ask:
 
 ## Step 6: Log the Decision
 
-If significant design direction was set (color palette chosen, type system settled), run `/decide`
-to formally record it as an ADR — e.g. "Color palette and token system adopted".
+If significant design direction was set (color palette chosen, type system settled),
+note it for `/session-end` to auto-harvest as an ADR — e.g. "Color palette and token system adopted".
 
-This ensures `/dev` and `/brainstorm` always reference settled decisions, not exploratory choices.
+This ensures future implementation and design work always references settled decisions, not exploratory choices.
 
 ---
 
@@ -211,8 +211,8 @@ This ensures `/dev` and `/brainstorm` always reference settled decisions, not ex
 
 This command is now complete.
 
-Do NOT automatically proceed to `/dev`, `/design`, or any other command.
-Do NOT start implementing SwiftUI/code components — that is a `/dev` task.
+Do NOT automatically proceed to `/design` or any implementation command.
+Do NOT start implementing code components — that is a dev task.
 Wait for the user to explicitly type the next command.
 
 $ARGUMENTS
