@@ -123,7 +123,7 @@ Take a screenshot if possible and show it. Ask: "Does this capture what you had 
 
 If this sketch represents a new idea (not just a UI iteration), create or update a brainstorm log:
 - File: `docs/brainstorm/[feature-name].md`
-- Use template: `.claude/templates/brainstorm-log.md`
+- Use template: `_bmad/expansion-packs/bmad-flow/templates/brainstorm-log.md`
 - Link the sketch in the log
 
 ---

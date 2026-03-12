@@ -42,7 +42,7 @@ fi
 # ── Context files ─────────────────────────────────────────────────────────────
 echo ""
 echo "📁 Setting up context files..."
-mkdir -p .claude/context .claude/commands .claude/templates docs/decisions docs/brainstorm
+mkdir -p .claude/context .claude/commands docs/decisions docs/brainstorm
 
 for f in current decisions patterns; do
   dest=".claude/context/${f}.md"
@@ -77,15 +77,6 @@ if [ ! -f "PROJECT.md" ]; then
   echo "   Created PROJECT.md"
 fi
 
-# ── Templates ─────────────────────────────────────────────────────────────────
-for t in brainstorm-log adr; do
-  dest=".claude/templates/${t}.md"
-  if [ ! -f "$dest" ]; then
-    cp "$PACK/templates/${t}.md" "$dest"
-    echo "   Created $dest"
-  fi
-done
-
 # ── Design scaffolding ────────────────────────────────────────────────────────
 echo ""
 echo "🎨 Setting up design scaffolding..."
@@ -108,7 +99,7 @@ fi
 # ── Slash commands ────────────────────────────────────────────────────────────
 echo ""
 echo "📋 Setting up slash commands..."
-for agent in session-start session-end brainstorm design design-system decide sync-check review; do
+for agent in session-start session-end design design-system sync-check; do
   dest=".claude/commands/${agent}.md"
   if [ ! -f "$dest" ]; then
     cp "$PACK/agents/${agent}.md" "$dest"

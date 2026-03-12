@@ -15,7 +15,7 @@ cd "$PACK" && git pull origin main && cd - > /dev/null
 # ── Sync slash commands ──────────────────────────────────────────────────────
 echo ""
 echo "📋 Syncing slash commands..."
-for agent in session-start session-end brainstorm design design-system decide sync-check review; do
+for agent in session-start session-end design design-system sync-check; do
   src="$PACK/agents/${agent}.md"
   dest=".claude/commands/${agent}.md"
   if [ -f "$src" ]; then

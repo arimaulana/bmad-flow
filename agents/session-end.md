@@ -75,7 +75,7 @@ Execute all applicable updates. Skip only if there is genuinely nothing new.
 For each decision identified and confirmed by the user:
 
 1. Determine the next ADR number: read `docs/decisions/` directory to find the highest existing number
-2. Create `docs/decisions/NNN-[slug].md` using the template at `.claude/templates/adr.md`
+2. Create `docs/decisions/NNN-[slug].md` using the template at `_bmad/expansion-packs/bmad-flow/templates/adr.md`
    - `NNN` = next number (zero-padded to 3 digits)
    - `[slug]` = kebab-case short name
 3. Update `.claude/context/DECISIONS.md`:
