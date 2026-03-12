@@ -40,6 +40,7 @@ The setup script will:
 - Install the SessionStart hook (`.claude/settings.json`)
 - Copy slash commands to `.claude/commands/`
 - Create `PROJECT.md` artifact map
+- Scaffold `design/` directory with preview shell and component library
 
 Then fill in your project-specific content in the context files and `CLAUDE.md`.
 
@@ -94,6 +95,27 @@ cd _bmad/expansion-packs/bmad-flow && git pull origin main  # Update bmad-flow
 /session-end            ← update all docs
 ```
 
+## Design Tooling
+
+bmad-flow includes a lightweight wireframing toolkit — no Figma or external tools needed.
+
+**Preview Shell** (`design/sketches/preview-shell.html`) — open in a browser to get:
+- Sidebar gallery of all sketches, grouped by section
+- Responsive viewport toggle (Mobile 390px / Tablet 768px / Desktop 1280px / Full)
+- Dark mode toggle that applies to the loaded sketch
+- Clickable prototype navigation between screens via `data-link`
+
+**Component Library** (`design/system/components.html`) — reusable HTML snippets as `<template>` tags. The `/design` agent copies these into sketches instead of writing from scratch. Includes: Navbar, BottomNav, Buttons, Input, TextArea, Select, Cards, Modal, Toast, Badge, Avatar, List Item, Empty State, Skeleton.
+
+**Prototype Linking** — add `data-link="section/screen-v1.html"` to any clickable element in a sketch. The preview shell intercepts clicks and navigates to the target screen in the iframe.
+
+**Workflow:**
+```
+/design-system          ← define tokens, generate components.html
+/design login screen    ← generate sketch, auto-registered in preview shell
+                           open preview-shell.html → browse, toggle viewport, navigate
+```
+
 ## Artifact Map
 
 | Want to know | File |
@@ -103,6 +125,8 @@ cd _bmad/expansion-packs/bmad-flow && git pull origin main  # Update bmad-flow
 | Full ADR? | `docs/decisions/NNN-name.md` |
 | Code patterns? | `.claude/context/PATTERNS.md` |
 | UI sketches? | `design/sketches/` |
+| Sketch preview? | `design/sketches/preview-shell.html` |
+| Component library? | `design/system/components.html` |
 | Brainstorm logs? | `docs/brainstorm/` |
 | BMAD stories? | `_bmad-output/stories/` |
 | BMAD architecture? | `_bmad-output/architecture.md` |
