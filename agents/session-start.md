@@ -5,7 +5,7 @@ You are starting a new Claude Code session for $PROJECT_NAME.
 Load context in this order:
 1. Read `.claude/context/CURRENT.md` — current phase, in-progress, next steps
 2. Read `.claude/context/DECISIONS.md` — settled decisions (never relitigate these)
-3. Read `BACKLOG.md` if it exists — pending tasks (last 40 lines)
+3. Read `.claude/context/PATTERNS.md` — code patterns to follow
 
 Then print this briefing:
 
@@ -28,9 +28,6 @@ Then print this briefing:
 **Watch out for:**
 [list any Open Assumptions or Pending Decisions from CURRENT.md; skip if empty]
 
-**Settled decisions (do not relitigate):**
-[3–4 most relevant lines from DECISIONS.md given current phase]
-
 **Suggested focus:**
 [1–3 concrete things to work on today, based on In Progress + Next Up]
 
@@ -46,6 +43,25 @@ Append a flag to change loading depth:
 
 - `quick` — read CURRENT.md only, print a one-paragraph summary
 - `full` — also read `CLAUDE.md` hard constraints + `docs/brainstorm/vision.md`
+- `hook` — print instructions for setting up a SessionStart hook that auto-loads DECISIONS.md and PATTERNS.md on every conversation (not just `/session-start`). Show the user this JSON to add to `.claude/settings.json`:
+  ```json
+  {
+    "hooks": {
+      "SessionStart": [
+        {
+          "matcher": "",
+          "hooks": [
+            {
+              "type": "command",
+              "command": "[ -f .claude/context/DECISIONS.md ] && echo '=== DECISIONS ===' && cat .claude/context/DECISIONS.md; [ -f .claude/context/PATTERNS.md ] && echo '=== PATTERNS ===' && cat .claude/context/PATTERNS.md; true"
+            }
+          ]
+        }
+      ]
+    }
+  }
+  ```
+  Explain that with this hook, DECISIONS.md and PATTERNS.md will be injected into every session automatically — useful if the user frequently works outside of `/session-start`.
 
 Default (no flag) = standard mode above.
 

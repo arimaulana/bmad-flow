@@ -59,17 +59,6 @@ Execute all applicable updates. Skip only if there is genuinely nothing new.
 - Update `## Active Task Journal` if a multi-session task is ongoing
 - Clear resolved assumptions from `## Open Assumptions`
 
-### `BACKLOG.md` *(if items were completed)*
-- Mark completed items: `[checkmark] Item — done YYYY-MM-DD`
-
-### `CHANGELOG.md` *(if code or decisions changed)*
-- Append entry at the top:
-```
-## [Phase/Feature — short description] — YYYY-MM-DD
-### Added / Changed / Fixed / Decisions
-- [one line per item]
-```
-
 ### `docs/decisions/` *(if decisions were identified in Step 1–5)*
 
 For each decision identified and confirmed by the user:

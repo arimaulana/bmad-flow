@@ -1,15 +1,1 @@
-{
-  "hooks": {
-    "SessionStart": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "[ -f .claude/context/DECISIONS.md ] && echo '=== DECISIONS ===' && cat .claude/context/DECISIONS.md; [ -f .claude/context/PATTERNS.md ] && echo '=== PATTERNS ===' && cat .claude/context/PATTERNS.md; true"
-          }
-        ]
-      }
-    ]
-  }
-}
+{}

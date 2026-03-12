@@ -54,10 +54,10 @@ for f in current decisions patterns; do
   fi
 done
 
-# ── SessionStart hook ─────────────────────────────────────────────────────────
+# ── Settings (no hook by default) ─────────────────────────────────────────────
 if [ ! -f ".claude/settings.json" ]; then
   cp "$PACK/templates/settings.json" ".claude/settings.json"
-  echo "   Created .claude/settings.json (SessionStart hook)"
+  echo "   Created .claude/settings.json"
 else
   echo "   Skipping .claude/settings.json (already exists)"
 fi
@@ -120,3 +120,6 @@ echo "  • .claude/context/PATTERNS.md  — code patterns"
 echo "  • CLAUDE.md                    — project-specific instructions"
 echo ""
 echo "Start your first session: /session-start"
+echo ""
+echo "Optional: run /session-start hook to set up auto-loading"
+echo "  DECISIONS.md & PATTERNS.md on every conversation."

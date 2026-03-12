@@ -13,7 +13,6 @@ Run `date "+%Y-%m-%d %H:%M"` via Bash. Use this as the reference "now" throughou
 Read all of these in parallel:
 1. `.claude/context/CURRENT.md` — note `last_verified` value
 2. `.claude/context/DECISIONS.md` — note `_Last synced_` value
-3. `CHANGELOG.md` — note the date of the top entry (if file exists)
 
 ---
 
@@ -56,7 +55,6 @@ If `design/sketches/` exists:
 |-------------------------------|-----------------|--------------|--------|
 | .claude/context/CURRENT.md    | [last_verified] | [N days ago] | [✅/⚠️/🔴] |
 | .claude/context/DECISIONS.md  | [last_synced]   | [N days ago] | [✅/⚠️/🔴] |
-| CHANGELOG.md                  | [top entry]     | [N days ago] | [✅/⚠️/🔴] |
 | docs/decisions/ (latest ADR)  | [NNN-name.md]   | [N days ago] | [✅/⚠️/🔴] |
 
 ### Guidelines
@@ -88,9 +86,6 @@ Print applicable flags:
 
 **CURRENT.md stale:** `last_verified` more than 3 days old →
 > ⚠️ CURRENT.md is stale. Run `/session-end` to refresh it.
-
-**CHANGELOG drift:** Top entry is old but CURRENT.md shows recent completed work →
-> ⚠️ CHANGELOG.md may be missing recent entries.
 
 **Sketch index drift:** Unindexed sketch files →
 > ⚠️ These sketches are not in index.html: `[filenames]`. Add them or delete if abandoned.
