@@ -28,6 +28,7 @@ Read if they exist:
 2. `design/system/guide.md` — component specs and design direction
 3. `design/system/colors.md` — color token reference
 4. `design/system/preview.html` — existing preview (if iterating)
+5. `design/system/components.html` — existing component snippets (if iterating)
 
 If files don't exist yet: this is a greenfield design system — note that.
 
@@ -184,6 +185,24 @@ Component specs — each component gets:
 - Stack two primary buttons
 - Use on colored backgrounds without checking contrast
 ```
+
+### E. `design/system/components.html`
+
+HTML file containing reusable component snippets as `<template>` tags. The `/design` agent reads this file and copies component HTML into sketches as building blocks.
+
+Each component is a `<template>` with `id="comp-[name]"` and `data-category="[category]"`.
+
+Categories: `navigation`, `form`, `feedback`, `layout`, `data-display`.
+
+Generate components based on the component list proposed in Step 3. Each component should:
+- Use CSS variables from `tokens.css` (with fallback values)
+- Include all relevant variants (primary/secondary/ghost) as separate templates
+- Include states (default, disabled) where applicable
+- Use inline styles referencing CSS custom properties for portability
+
+If `components.html` already exists, update it to match new/changed tokens — do not remove components that are still valid.
+
+A starter template exists at `_bmad/expansion-packs/bmad-flow/templates/components.html` — use it as a base if starting fresh.
 
 ---
 

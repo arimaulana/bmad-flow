@@ -86,6 +86,25 @@ for t in brainstorm-log adr; do
   fi
 done
 
+# ── Design scaffolding ────────────────────────────────────────────────────────
+echo ""
+echo "🎨 Setting up design scaffolding..."
+mkdir -p design/sketches design/system
+
+if [ ! -f "design/sketches/preview-shell.html" ]; then
+  sed "s/\$PROJECT_NAME/$PROJECT_NAME/g" "$PACK/templates/preview-shell.html" > "design/sketches/preview-shell.html"
+  echo "   Created design/sketches/preview-shell.html"
+else
+  echo "   Skipping preview-shell.html (already exists)"
+fi
+
+if [ ! -f "design/system/components.html" ]; then
+  sed "s/\$PROJECT_NAME/$PROJECT_NAME/g" "$PACK/templates/components.html" > "design/system/components.html"
+  echo "   Created design/system/components.html"
+else
+  echo "   Skipping components.html (already exists)"
+fi
+
 # ── Slash commands ────────────────────────────────────────────────────────────
 echo ""
 echo "📋 Setting up slash commands..."

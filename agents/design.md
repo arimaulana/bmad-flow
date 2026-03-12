@@ -18,12 +18,13 @@ Read if they exist:
 1. `design/system/colors.md` — color token reference
 2. `design/system/tokens.css` — CSS variables (use these in all HTML)
 3. `design/system/guide.md` — component specs, naming conventions, design direction
+4. `design/system/components.html` — reusable component snippets (use these as building blocks)
 
 ---
 
 ## Step 3: Check Existing Sketches
 
-Read `design/sketches/index.html` to see what already exists.
+Read `design/sketches/preview-shell.html` and check the `SKETCHES` manifest array to see what already exists.
 
 If iterating on an existing sketch: read that file first. Use `v2`, `v3` etc — never overwrite.
 
@@ -37,7 +38,7 @@ Organise sketches by section of the app. Always put the file in the correct subf
 
 ```
 design/sketches/
-  index.html           ← gallery (update this too)
+  preview-shell.html   ← interactive gallery & preview (update manifest here)
   [section]/           ← one folder per app section
   shared/              ← cross-section components
 ```
@@ -53,11 +54,39 @@ Files in subfolders are two levels deep — use:
 
 ### Rules
 - Use CSS variables from `tokens.css` — never hardcode hex colors or px values with token equivalents
+- **Reuse components** from `design/system/components.html` — copy the `<template>` inner HTML as building blocks instead of writing from scratch. Adapt content and layout but keep the token-based styling
 - Use realistic content — real names, real numbers, real copy (not Lorem Ipsum)
 - Include both light and dark mode where relevant (`@media (prefers-color-scheme: dark)`)
 - Mobile viewport: 390px width when applicable
 - Interactive states where helpful (hover, active, transition)
 - One sketch = one idea variant. Create `v2`, `v3` for iterations
+
+### Prototype linking
+
+When a sketch element should navigate to another screen, add `data-link` pointing to the target sketch file:
+
+```html
+<button data-link="dashboard/home-v1.html">Go to Dashboard</button>
+```
+
+The preview shell intercepts `data-link` clicks and loads the target in the iframe.
+For cases where the sketch runs standalone (not in the shell), also add this script at the bottom of the `<body>`:
+
+```html
+<script>
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-link]');
+  if (el) {
+    e.preventDefault();
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'navigate', file: el.dataset.link }, '*');
+    } else {
+      window.location.href = el.dataset.link;
+    }
+  }
+});
+</script>
+```
 
 ### Filename convention
 
@@ -65,17 +94,26 @@ Files in subfolders are two levels deep — use:
 
 ---
 
-## Step 5: Update Index
+## Step 5: Update Preview Shell Manifest
 
-Add an entry to `design/sketches/index.html` under the correct section:
-- Name, date, description
-- Status: `Exploring` | `Adopted` | `Discarded`
+Open `design/sketches/preview-shell.html` and add an entry to the `SKETCHES` array:
+
+```js
+{ section: "section-name", file: "section/feature-variant-v1.html", name: "Feature Name", status: "exploring", date: "YYYY-MM-DD", description: "Short description" }
+```
+
+- Status values: `exploring` | `adopted` | `discarded`
+- The `file` path is relative to the `design/sketches/` folder
 
 ---
 
 ## Step 6: Open Preview
 
-Start the preview server if configured, or instruct user to open the file directly.
+Instruct the user to open `design/sketches/preview-shell.html` in a browser. The shell provides:
+- Sidebar gallery of all sketches
+- Responsive viewport toggle (Mobile / Tablet / Desktop / Full)
+- Dark mode toggle
+- Clickable prototype navigation between sketches via `data-link`
 
 Take a screenshot if possible and show it. Ask: "Does this capture what you had in mind? What to adjust?"
 
